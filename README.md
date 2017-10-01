@@ -1,2 +1,6 @@
 # ACMI historical film screening data 
-## (processing & visualisation)
+i wrote this in like 2 days don't @ me
+## processing
+
+## visualisation
+### to do:
