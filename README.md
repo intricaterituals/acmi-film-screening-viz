@@ -1,5 +1,5 @@
 # ACMI historical film screening data 
-i wrote this in like 2 days don't @ me
+this is a work in progess! also i started this like 2 days ago don't @ me
 ## processing
 
 movie.py:
