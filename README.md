@@ -8,7 +8,7 @@ movie.py:
 * queries TMDB (The Movie Database) API to fill in info about each movie
 * concatenates TMDB info as new columns alongside original dataset
 
-at the moment, unique_tmdb.csv contains a table of all the unique films screened at ACMI + corresponding metadata.
+at the moment, unique_tmdb.csv contains a table of all the unique films screened at ACMI + corresponding metadata. the date/time/place of each screening corresponds to the first screening of that film.
 
 from cursory inspection, there are still a number of edge case errors (resulting from mistyped records / inconsistent formatting across datasets)
 
