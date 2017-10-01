@@ -16,7 +16,11 @@ from cursory inspection, there are still a number of edge case errors (resulting
 
 * check release date against screening date to confirm correct identity of TMDB movie match (in case more than 2 movies have the same title)
 * copy TMDB info from unique_tmdb.csv to the complete screening dataset
+* integrate gender-related TMDB data
 * refactor movie.py because it's super messy rn
 
 ## visualisation
-### to do:
+
+### to do / in progress:
+
+* general explorable graph with sliders/pivot etc - similar to [Shiny Movie Explorer](http://shiny.rstudio.com/gallery/movie-explorer.html). probably implemented using Bokeh or D3.js

@@ -1,12 +1,10 @@
 import pandas as pd
 import numpy as np
-import matplotlib
 import sys
 import http.client
 import json
 import re
 import math
-import difflib
 from multiprocessing import Pool, Value, Lock, Process
 from datetime import datetime
 startTime = datetime.now()
