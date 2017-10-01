@@ -54,7 +54,7 @@ def tmdb_query(query):
 # takes string keyword/phrase to be queried (i.e. name of movie), returns matching TMDB movie ID
 	conn = http.client.HTTPSConnection("api.themoviedb.org")
 	payload = "{}"
-	api_key = "ebe089b151a80b2e62133c729c577949"
+	api_key = "xxxxxxxxxxxxxx"
 
 	keyword = query.replace(' ', '+')
 
