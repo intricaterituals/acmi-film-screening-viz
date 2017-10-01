@@ -92,12 +92,11 @@ def tmdb_query(query):
 	#if there is more than one ~matching~ title: check release date with screening date
 	#print(query)
 
-	'''
-	POSSIBILITIES:
-	there is only one matching entry => return selection
-	there are multiple exact name matches => check release date => return final
-	there are no exact name matches => return selection
-	'''
+	#POSSIBILITIES:
+	#there is only one matching entry => return selection
+	#there are multiple exact name matches => check release date => return final
+	#there are no exact name matches => return selection
+
 
 def get_credits(movieid):
 # takes movie_id integer argument, returns json object of credits
@@ -209,10 +208,21 @@ if __name__ == '__main__':
 	p.close()
 	sys.exit()
 
-process_query(ns, "Lost Highway")
-
+'''
+col = ['Day', 'Date', 'Time', 'Place']
+df = process_data("acmi-historic-film-screenings-data.tsv")
+df = df.drop_duplicates(subset='Title')
+screening_data = pd.DataFrame(df, columns=col)
+screening_data = screening_data.reset_index()
+print(screening_data)
+tmdb_data = pd.read_csv("final-unique.csv", sep='\t')
+tmdb_data = tmdb_data.drop(tmdb_data.columns[0], axis=1)
+tmdb_data = tmdb_data.drop(col, axis=1)
+tmdb_data = pd.concat([screening_data, tmdb_data], axis=1)
+#print(tmdb_data)
+tmdb_data.to_csv('final_tmdb.csv', sep='\t', encoding='utf-8')
 print(datetime.now() - startTime)
 
-#def match_rows:
-#master.to_csv('test.csv', sep='\t', encoding='utf-8')
+'''
+
 
