@@ -205,11 +205,18 @@ if __name__ == '__main__':
 	p.starmap(process_query, args)
 	p.close()
 	sys.exit()
-
 '''
+
 col = ['Day', 'Date', 'Time', 'Place']
-df = process_data("acmi-historic-film-screenings-data.tsv")
-df = df.drop_duplicates(subset='Title')
+col2 = ['tmdb_id', 'original_language', 'release_date',
+		'budget', 'revenue', 'runtime', 'genre', 'director', 'cast']
+original = process_data("acmi-historic-film-screenings-data.tsv")
+attributes = ['Day', 'Date', 'Time', 'Place', 'Title', 'Rating', 'tmdb_id', 
+			'original_language', 'release_date',
+			'budget', 'revenue', 'runtime', 'genre', 'director', 'cast']
+original = original.reindex(columns=attributes)
+
+df = original.drop_duplicates(subset='Title')
 screening_data = pd.DataFrame(df, columns=col)
 screening_data = screening_data.reset_index()
 print(screening_data)
@@ -218,7 +225,11 @@ tmdb_data = tmdb_data.drop(tmdb_data.columns[0], axis=1)
 tmdb_data = tmdb_data.drop(col, axis=1)
 tmdb_data = pd.concat([screening_data, tmdb_data], axis=1)
 #print(tmdb_data)
-tmdb_data.to_csv('final_tmdb.csv', sep='\t', encoding='utf-8')
+
+original.loc[original.Title.isin(tmdb_data.Title), col2] = tmdb_data[col2]
+print(original)
+original.to_csv('tmdb_appended.csv', sep='\t', encoding='utf-8')
+
 print(datetime.now() - startTime)
 
 '''
