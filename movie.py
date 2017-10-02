@@ -168,7 +168,7 @@ def process_query(movie, ns):
 	ns.df.to_csv('final3.csv', sep='\t', encoding='utf-8')
 	print(index)
 	return master
-
+'''
 print(get_credits(500))
 df = process_data("acmi-historic-film-screenings-data.tsv")
 
@@ -219,19 +219,17 @@ original = original.reindex(columns=attributes)
 df = original.drop_duplicates(subset='Title')
 screening_data = pd.DataFrame(df, columns=col)
 screening_data = screening_data.reset_index()
-print(screening_data)
+#print(screening_data)
 tmdb_data = pd.read_csv("final-unique.csv", sep='\t')
 tmdb_data = tmdb_data.drop(tmdb_data.columns[0], axis=1)
 tmdb_data = tmdb_data.drop(col, axis=1)
 tmdb_data = pd.concat([screening_data, tmdb_data], axis=1)
-#print(tmdb_data)
+tmdb_data = tmdb_data.drop(tmdb_data.columns[0], axis=1)
 
-original.loc[original.Title.isin(tmdb_data.Title), col2] = tmdb_data[col2]
-print(original)
-original.to_csv('tmdb_appended.csv', sep='\t', encoding='utf-8')
+final = pd.merge(original, tmdb_data, on='Title')
+final.to_csv('tmdb_appended.csv', sep='\t', encoding='utf-8')
 
 print(datetime.now() - startTime)
 
-'''
 
 
