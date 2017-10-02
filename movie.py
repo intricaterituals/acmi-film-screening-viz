@@ -168,7 +168,7 @@ def process_query(movie, ns):
 	ns.df.to_csv('final3.csv', sep='\t', encoding='utf-8')
 	print(index)
 	return master
-
+'''
 print(get_credits(500))
 df = process_data("acmi-historic-film-screenings-data.tsv")
 
@@ -197,6 +197,7 @@ ns.df = master
 
 print(ns.df)
 
+
 if __name__ == '__main__':
 	p = Pool(5)
 	length = list(range(len(master.index)+1))
@@ -206,7 +207,6 @@ if __name__ == '__main__':
 	p.close()
 	sys.exit()
 '''
-
 col = ['Day', 'Date', 'Time', 'Place']
 col2 = ['tmdb_id', 'original_language', 'release_date',
 		'budget', 'revenue', 'runtime', 'genre', 'director', 'cast']
@@ -219,10 +219,12 @@ tmdb_data = tmdb_data.drop(col, axis=1)
 
 final = original.reset_index().merge(tmdb_data, on='Title').set_index(original.index)
 final = final.sort_values('index')
+final['Date'] = pd.to_datetime(final['Date'], format="%Y/%m/%d")
+#print(final['Date'].dtype)
 #final = pd.merge(original, tmdb_data, on='Title').set_index(original.index)
 final.to_csv('tmdb_appended.csv', sep='\t', encoding='utf-8')
 
 print(datetime.now() - startTime)
 
-'''
+
 
