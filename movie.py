@@ -211,20 +211,19 @@ col = ['Day', 'Date', 'Time', 'Place']
 col2 = ['tmdb_id', 'original_language', 'release_date',
 		'budget', 'revenue', 'runtime', 'genre', 'director', 'cast']
 original = process_data("acmi-historic-film-screenings-data.tsv")
-attributes = ['Day', 'Date', 'Time', 'Place', 'Title', 'Rating', 'tmdb_id', 
-			'original_language', 'release_date',
-			'budget', 'revenue', 'runtime', 'genre', 'director', 'cast']
-original = original.reindex(columns=attributes)
+print(original)
+#original = original.reindex(columns=attributes)
 
-df = original.drop_duplicates(subset='Title')
-screening_data = pd.DataFrame(df, columns=col)
-screening_data = screening_data.reset_index()
+#df = original.drop_duplicates(subset='Title')
+#screening_data = pd.DataFrame(df, columns=col)
+#screening_data = screening_data.reset_index()
 #print(screening_data)
 tmdb_data = pd.read_csv("final-unique.csv", sep='\t')
 tmdb_data = tmdb_data.drop(tmdb_data.columns[0], axis=1)
 tmdb_data = tmdb_data.drop(col, axis=1)
-tmdb_data = pd.concat([screening_data, tmdb_data], axis=1)
-tmdb_data = tmdb_data.drop(tmdb_data.columns[0], axis=1)
+print(tmdb_data)
+#tmdb_data = pd.concat([screening_data, tmdb_data], axis=1)
+#tmdb_data = tmdb_data.drop(tmdb_data.columns[0], axis=1)
 
 final = pd.merge(original, tmdb_data, on='Title')
 final.to_csv('tmdb_appended.csv', sep='\t', encoding='utf-8')
