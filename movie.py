@@ -102,7 +102,7 @@ def get_credits(movieid):
 # or https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>
 	conn = http.client.HTTPSConnection("api.themoviedb.org")
 	payload = "{}"
-	api_key = "ebe089b151a80b2e62133c729c577949"
+	api_key = "xxxxxxxxxxxxxx"
 
 	conn.request("GET", "/3/movie/{}?api_key={}&append_to_response=credits".format(movieid, api_key), payload)
 
