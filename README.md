@@ -9,14 +9,17 @@ movie.py:
 * queries TMDB (The Movie Database) API to fill in info about each movie
 * concatenates TMDB info as new columns alongside original dataset
 
-at the moment, unique_tmdb.csv contains a table of all the unique films screened at ACMI + corresponding metadata. the date/time/place of each screening corresponds to the first screening of that film.
+at the moment:
+
+* unique_tmdb.csv contains a table of all the unique films screened at ACMI + corresponding metadata. the date/time/place of each screening corresponds to the first screening of that film.
+* UPDATE: tmdb_appended.csv is the original dataset with TMDB info added alongside!
+
 
 from cursory inspection, there are still a number of edge case errors (resulting from mistyped records / inconsistent formatting across datasets)
 
 ### to do:
 
 * check release date against screening date to confirm correct identity of TMDB movie match (in case more than 2 movies have the same title)
-* copy TMDB info from unique_tmdb.csv to the complete screening dataset
 * integrate gender-related TMDB data
 * refactor movie.py because it's super messy rn
 
