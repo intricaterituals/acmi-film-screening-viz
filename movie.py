@@ -175,9 +175,7 @@ original = process_data("acmi-historic-film-screenings-data.tsv")
 df = original.Title.unique()
 df = pd.DataFrame(df, columns=['Title'])
 
-attributes = ['Day', 'Date', 'Time', 'Place', 'Title', 'Rating', 'tmdb_id', 
-			'original_language', 'release_date',
-			'budget', 'revenue', 'runtime', 'genre', 'director', 'cast']
+attributes = ['Day', 'Date', 'Time', 'Place', 'Title', 'Rating', 'tmdb_id', 'original_language', 'release_date','budget', 'revenue', 'runtime', 'genre', 'director', 'cast']
 df = df.reindex(columns=attributes)
 
 # TO DO: wow this is messy 3am code. write equivalent function/loop 
@@ -197,8 +195,7 @@ ns.df = master
 run_process(ns)
 
 col = ['Day', 'Date', 'Time', 'Place']
-col2 = ['tmdb_id', 'original_language', 'release_date', 'budget', 
-				'revenue', 'runtime', 'genre', 'director', 'cast']
+col2 = ['tmdb_id', 'original_language', 'release_date', 'budget', 'revenue', 'runtime', 'genre', 'director', 'cast']
 
 tmdb_data = pd.read_csv("final-unique.csv", sep='\t')
 tmdb_data = tmdb_data.drop(tmdb_data.columns[0], axis=1)
